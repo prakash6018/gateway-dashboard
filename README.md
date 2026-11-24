@@ -24,9 +24,9 @@ Admin console for [llm-gateway-guardrails](https://github.com/prakash6018/llm-ga
 
 ```mermaid
 flowchart LR
-  B[Browser<br/>React + TanStack Query] -- "/api/* + session cookie" --> R[Next.js route handlers<br/>auth · RBAC · Zod]
-  R -- "x-admin-token (server only)" --> G[llm-gateway-guardrails<br/>/admin API]
-  M[middleware.ts<br/>verify session] -. guards .-> R
+  B["Browser<br/>React + TanStack Query"] -- "/api/* + session cookie" --> R["Next.js route handlers<br/>auth · RBAC · Zod"]
+  R -- "x-admin-token (server only)" --> G["llm-gateway-guardrails<br/>/admin API"]
+  M["middleware.ts<br/>verify session"] -. guards .-> R
 ```
 
 - **The admin token never reaches the browser.** Client code only calls this app's `/api/*` routes; those check the session and role, validate the body, then call the gateway with the token from server-side env.
