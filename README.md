@@ -1,5 +1,7 @@
 # gateway-dashboard
 
+[![CI](https://github.com/prakash6018/gateway-dashboard/actions/workflows/ci.yml/badge.svg)](https://github.com/prakash6018/gateway-dashboard/actions/workflows/ci.yml)
+
 Admin console for [llm-gateway-guardrails](https://github.com/prakash6018/llm-gateway-guardrails): see what every tenant is spending against its budget, what the guardrails refused and why, change budgets and policies, and check what a prompt would cost before anyone sends it.
 
 **Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS v4 · TanStack Query · Zod**
@@ -35,10 +37,12 @@ flowchart LR
 
 ## Run it
 
-You need the gateway running with its admin API and demo data:
+You need the gateway running with its admin API and demo data. Clone both repos side by side:
 
 ```bash
-cd ../llm-gateway-guardrails
+git clone https://github.com/prakash6018/llm-gateway-guardrails
+git clone https://github.com/prakash6018/gateway-dashboard
+cd llm-gateway-guardrails
 export GATEWAY_MASTER_KEY=$(node -e "console.log(require('crypto').randomBytes(32).toString('base64'))")
 export GATEWAY_ADMIN_TOKEN=dev-admin-token
 node examples/seed-demo.ts demo.db               # 3 fictional tenants, 30 days of traffic
